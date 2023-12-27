@@ -1,0 +1,79 @@
+﻿<section class="section-hero overlay inner-page bg-image" style="background-image: url(/images/hero_1.jpg)" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">SignUp</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5">
+                <h2 class="mb-4">Sign Up To JobBoard</h2>
+                <form asp-action="SignUp" asp-controller="TaiKhoans" enctype="multipart/form-data" class="p-4 border rounded">
+
+                    <div class="row form-group">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" for="fname">UserName</label>
+                            <input name="Username" type="text" id="fname" class="form-control" placeholder="Username" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" for="fname">Password</label>
+                            <input name="Pass" type="password" id="fname" class="form-control" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="row form-group mb-4">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" for="fname">Address</label>
+                            <input name="Address" type="text" id="fname" class="form-control" placeholder="Address" required>
+                        </div>
+                    </div>
+                    <div class="row form-group mb-4">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" for="fname">Phone</label>
+                            <input name="Phone" type="text" id="fname" class="form-control" placeholder="Phone" required>
+                        </div>
+                    </div>
+                    <div class="row form-group mb-4">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" for="fname">Name</label>
+                            <input name="Name" type="text" id="fname" class="form-control" placeholder="Name" required>
+                        </div>
+                    </div>
+                    <div class="row form-group mb-4">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" for="fname">Email</label>
+                            <input name="Email" type="email" id="fname" class="form-control" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="row form-group mb-4">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" for="fname">Avatar</label>
+                            <input name="File" type="file" id="fname" class="form-control" placeholder="Avatar" required>
+                        </div>
+                    </div>
+                    <div class="row form-group mb-4">
+                        <div class="col-md-12 mb-3 mb-md-0">
+                            <label class="text-black" for="fname">Type of account</label>
+                            <select name="Account">
+                                <option value="1">Ứng Viên</option>
+                                <option value="0">Nhà Tuyển Dụng</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <input type="submit" value="Sign Up" class="btn px-4 btn-primary text-white">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

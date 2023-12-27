@@ -1,0 +1,113 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+@model NhaTuyenDung
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo mr-5" href=@Url.ActionLink("Index","CongViecs")><img src="~/Admin/images/logo.svg" class="mr-2" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href=@Url.ActionLink("Index","CongViecs")><img src="~/Admin/images/logo-mini.svg" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+
+            <ul class="navbar-nav mr-lg-2">
+                <li class="nav-item nav-search d-none d-lg-block">
+                    <form asp-action="TimKiem" asp-controller="NhaTuyenDungs">
+                        <div class="input-group">
+                            <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                                <span class="input-group-text" id="search">
+                                    <i class="icon-search"></i>
+                                </span>
+                            </div>
+                            <input name="Search" type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+                        </div>
+                    </form>
+                </li>
+            </ul>
+
+
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+        <!-- partial -->
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href=@Url.ActionLink("Admin","NhaTuyenDungs",new {Id=Model.ID})>
+                        <i class="icon-grid menu-icon"></i>
+                        <span class="menu-title">List Post Job</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href=@Url.ActionLink("Information","NhaTuyenDungs",new {Id=Model.ID})>
+                        <i class="icon-grid menu-icon"></i>
+                        <span class="menu-title">Information</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-panel">        
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Information form</h4>
+                                <p class="card-description">
+                                    Basic form layout
+                                </p>
+                                <img src="/AnhNTD/@Model.Avatar">
+                                <form  asp-action="Information" asp-controller="NhaTuyenDungs" class="forms-sample" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <input asp-for="ID" type="hidden" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input asp-for="TaiKhoanID" type="hidden" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tên Công Ty</label>
+                                        <input asp-for="TenCongTy" type="text" class="form-control" placeholder="Tên Công Ty">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Địa Chỉ</label>
+                                        <input asp-for="DiaChi" type="text" class="form-control" placeholder="Địa Chỉ">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Điện Thoại</label>
+                                        <input asp-for="DienThoai" type="text" class="form-control" placeholder="Điện Thoại">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input asp-for="Email" type="text" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <input asp-for="Avatar" type="hidden" class="form-control" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Image</label>
+                                        <input name="file" type="file" class="form-control">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mr-2">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->

@@ -1,0 +1,87 @@
+﻿@model CongViec
+@{
+    TaiKhoan user = (TaiKhoan)ViewData["user"];
+}
+@section acc{
+    @if (user == null)
+    {
+        <a href=@Url.ActionLink("Login","TaiKhoans") class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log In</a>
+    }
+    else
+    {
+        @if (user.nhaTuyenDung != null)
+        {
+            <a href=@Url.ActionLink("PostJob","CongViecs") class="btn btn-outline-white border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-add"></span>Post a Job</a>
+        }
+        <a href=@Url.ActionLink("Logout","TaiKhoans") class="btn btn-primary border-width-2 d-none d-lg-inline-block"><span class="mr-2 icon-lock_outline"></span>Log Out</a>
+    }
+}
+    @section job{
+    @if (user != null)
+    {
+        @if (user.nhaTuyenDung != null)
+        {
+            <li><a class="nav-link active" href=@Url.ActionLink("Admin","NhaTuyenDungs",new {Id=user.nhaTuyenDung.ID})>Manager Job</a></li>
+        }
+        @if (user.ungVien != null)
+        {
+            <li><a class="nav-link active" href=@Url.ActionLink("ListJob","XinViecs",new {Id=user.ungVien.ID})>List Apply Job</a></li>
+        }
+    }
+}
+<section class="section-hero overlay inner-page bg-image" style="background-image: url(/images/hero_1.jpg)" id="home-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-white font-weight-bold">Apply Job</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5">
+                <h2 class="mb-4">Apply Job</h2>
+                    <form asp-action="Apply" asp-controller="XinViecs" class="p-4 border rounded" enctype="multipart/form-data">
+                    <input type="hidden" value="@Model.ID" name="IdCV">
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <label class="text-black" for="fname">Name Job</label>
+                            <input value="@Model.TenCongViec" readonly type="text" id="fname" class="form-control" placeholder="Name Job">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <label class="text-black" for="fname">Name Company</label>
+                                <input value="@Model.NhaTuyenDung.TenCongTy" readonly type="text" id="fname" class="form-control" placeholder="Name Company">
+                            </div>
+                        </div>
+                        <div class="row form-group mb-4">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <label class="text-black" for="fname">CV Upload</label>
+                                <input name="CV" type="file" class="form-control" placeholder="Upload CV" required>
+                            </div>
+                        </div>
+                        <div class="row form-group mb-4">
+                            <div class="col-md-12 mb-3 mb-md-0">
+                                <label class="text-black" for="fname">Decription</label>
+                                <textarea name="MoTa" class="form-control" placeholder="Your Decription" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Apply Job" class="btn px-4 btn-primary text-white">
+                            </div>
+                        </div>
+
+                    </form>
+                
+                
+            </div>
+           
+        </div>
+    </div>
+</section>
+

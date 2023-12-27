@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    TaiKhoan user = (TaiKhoan)ViewData["user"];
+}
+@model List<CongViec>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo mr-5" href=@Url.ActionLink("Index","CongViecs")><img src="~/Admin/images/logo.svg" class="mr-2" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href=@Url.ActionLink("Index","CongViecs")><img src="~/Admin/images/logo-mini.svg" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+
+            <ul class="navbar-nav mr-lg-2">
+                <li class="nav-item nav-search d-none d-lg-block">
+                    <form asp-action="TimKiem" asp-controller="NhaTuyenDungs">
+                        <div class="input-group">
+                            <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                                <span class="input-group-text" id="search">
+                                    <i class="icon-search"></i>
+                                </span>
+                            </div>
+                            <input name="Search" type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+                        </div>
+                    </form>
+                </li>
+            </ul>
+
+
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_settings-panel.html -->
+        <!-- partial -->
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href=@Url.ActionLink("Admin","NhaTuyenDungs",new {Id=user.nhaTuyenDung.ID})>
+                        <i class="icon-grid menu-icon"></i>
+                        <span class="menu-title">List Post Job</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href=@Url.ActionLink("Information","NhaTuyenDungs",new {Id=user.nhaTuyenDung.ID})>
+                        <i class="icon-grid menu-icon"></i>
+                        <span class="menu-title">Information</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-title">Danh sách công việc</p>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table class="display expandable-table" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Tên Công Việc</th>
+                                                        <th>Tên Công Ty</th>
+                                                        <th>Địa Chỉ</th>
+                                                        <th>Loại Công Việc</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model)
+                                                    {
+                                                        <tr>
+                                                            <td>@item.TenCongViec</td>
+                                                            <td>@item.NhaTuyenDung.TenCongTy</td>
+                                                            <td>@item.DiaChi</td>
+                                                            <td>@item.LoaiCV</td>
+                                                            <td><a href=@Url.ActionLink("ViewJob","NhaTuyenDungs",new{Id=item.ID})><i class="material-icons" style="color:orange">remove_red_eye</i></a></td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
